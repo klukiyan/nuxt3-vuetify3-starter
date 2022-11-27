@@ -44,12 +44,13 @@ The helper folder contains the custom stuff for the Vuetify plugin
 1. Create the Icon component that will be used to render the icons. I just extended the Icon component from the `nuxt-icon` package.
 
 ```vue
-<template>
-	<div>
-		<Icon v-bind="$attrs" />
-	</div>
-</template>
 <script setup></script>
+
+<template>
+  <div>
+    <Icon v-bind="$attrs" />
+  </div>
+</template>
 ```
 
 2. Create the `aliases` object. Ensure that you pass in all the icons that are used by the Vuetify system.
@@ -58,14 +59,14 @@ The helper folder contains the custom stuff for the Vuetify plugin
 
 ```ts
 const custom: IconSet = {
-	component: (props: IconProps) =>
-		// Return render function
-		h(MIcon, {
-			name: props.icon /** The Icon component requires the name prop in order to render the correct icon */,
-			tag: props.tag,
-			disabled: props.disabled,
-		}),
-};
+  component: (props: IconProps) =>
+  // Return render function
+    h(MIcon, {
+      name: props.icon /** The Icon component requires the name prop in order to render the correct icon */,
+      tag: props.tag,
+      disabled: props.disabled,
+    }),
+}
 ```
 
 Here is a link to the docs for this [Creating a custom iconset](https://next.vuetifyjs.com/en/features/icon-fonts/#creating-a-custom-icon-set)
