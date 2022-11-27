@@ -7,18 +7,20 @@
     "reset": "rm -rf .nuxt node_modules .output package-lock.json && npm install",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint --fix ."
+    "lint": "eslint --ext .ts,.js,.vue ."
   },
   "dependencies": {
     "vite-plugin-vuetify": "^1.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.31.0",
     "@kevinmarrec/nuxt-pwa": "^0.13.0",
+    "@nuxtjs/eslint-config": "^12.0.0",
+    "@nuxtjs/eslint-module": "^3.1.0",
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nuxt": "3.0.0",
     "nuxt-icon": "^0.1.7",

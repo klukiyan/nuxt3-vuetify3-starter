@@ -1,10 +1,15 @@
 <script setup>
 
 
-const email = ref('')
-const password = ref('')
+const tableRows = ref([])
+const tableString = ref('')
+const loading = ref(false)
 
-const { ruleEmail, rulePassLen, ruleRequired } = useFormRules()
+// const vatList = computed(()=>{
+//   if (!tableString) return [];
+//   if (tableString.length < 6) return [];
+//   return (tableString || '').split('\n').filter((item) => item.length > 4);
+// })
 
 const submit = async () => {}
 </script>
@@ -12,42 +17,26 @@ const submit = async () => {}
 <template>
   <VContainer fluid class="fill-height">
     <VRow no-gutters align="center" justify="center" class="fill-height">
-      <VCol cols="12">
+      <VCol cols="12" md="4">
         <VRow no-gutters align="center" justify="center">
-          <VCol cols="12" md="6">
-            <h1>Sign In</h1>
-            <p class="text-medium-emphasis">
-              Enter your details to get started
-            </p>
+          <VCol cols="12" class="text-center" align="center" justify="center">
+            <h1 class="text-cyan-darken-1 mt-16">Free VIES VAT mass validation tool</h1>
 
-            <VForm class="mt-7" @submit.prevent="submit">
-              <div class="mt-1">
-                <label class="label text-grey-darken-2" for="email">Email</label>
-                <VTextField
-                  id="email"
-                  v-model="email"
-                  :rules="[ruleRequired, ruleEmail]"
-                  prepend-inner-icon="fluent:mail-24-regular"
-                  name="email"
-                  type="email"
-                />
-              </div>
-              <div class="mt-1">
-                <label class="label text-grey-darken-2" for="password">Password</label>
-                <VTextField
-                  id="password"
-                  v-model="password"
-                  :rules="[ruleRequired, rulePassLen]"
-                  prepend-inner-icon="fluent:password-20-regular"
-                  name="password"
-                  type="password"
-                />
-              </div>
-              <div class="mt-5">
-                <VBtn type="submit" block min-height="44" class="gradient primary">
-                  Sign In
-                </VBtn>
-              </div>
+            <VForm class="mt-7 text-center" align="center" justify="center" @submit.prevent="submit">
+              <v-textarea label="Paste your VAT codes here (one per line)" v-model="tableString"  rows="3" auto-grow :placeholder="'DE815512007\nHU10962914\nRO17275880'" class="text-area-vies" variant="outlined" color="cyan"
+              ></v-textarea>
+              <!-- :hint="`${vatList.length} records to validate`"
+              persistent-hint -->
+
+              <v-btn
+                variant="outlined"
+                color="cyan-darken-1"
+                :loading="loading"
+                prepend-icon="mdi-send"
+                @click="validate"
+              >
+                Validate
+              </v-btn>
             </VForm>
             <p class="text-center text-caption mt-10">
               <span>Don't have an account?
@@ -56,7 +45,7 @@ const submit = async () => {}
           </VCol>
         </VRow>
       </VCol>
-      <VCol class="hidden-md-and-down fill-height" md="6" lg="7">
+      <VCol v-if="tableRows.length > 0" class="hidden-md-and-down fill-height" cols="12" xs="12">
         <VImg
           src="https://wallpaper.dog/large/5557744.jpg"
           cover
@@ -77,3 +66,9 @@ const submit = async () => {}
     </VRow>
   </VContainer>
 </template>
+
+<style>
+/* .text-area-vies{
+  max-width:400px;
+} */
+</style>
