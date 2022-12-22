@@ -8,9 +8,9 @@ import MIcon from '~~/components/MIcon.vue'
  * Code for the icon component looks like this
  *
 <template>
-	<div>
-		<Icon v-bind="$attrs" />
-	</div>
+  <div>
+    <Icon v-bind="$attrs" />
+  </div>
 </template>
 <script setup></script>
  */
