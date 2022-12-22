@@ -1,5 +1,8 @@
 # Nuxt 3 + Vuetify 3 Starter
 
+https://github.com/BayBreezy/nuxt3-vuetify3-starter
+
+
 ![Starter Image](/public/starter.png)
 Soooo... Vuetify just released version 3.. Nuxt is at rc13 (will be released soon).
 This template here will get you up & running with adding the two together :)

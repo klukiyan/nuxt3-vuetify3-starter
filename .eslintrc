@@ -1,7 +1,4 @@
 {
-  "root": true,
-  "parserOptions": {
-    "parser": "babel-eslint"
-  },
-  "extends": ["prettier","plugin:prettier/recommended","eslint:recommended"]
+  "extends": "@antfu"
 }
+
